@@ -48,23 +48,27 @@
 - Detected uploaded malicious executable 3791.exe.
 - Log sources: Sysmon, WinEventLog, fortigate_utm.
 - Verified execution with Sysmon EventCode=1:
+- ```spl
+  index=botsv1 "3791.exe" sourcetype="XmlWinEventLog" EventCode=1
+- Extracted MD5 hash for further analysis.
 
-index=botsv1 "3791.exe" sourcetype="XmlWinEventLog" EventCode=1
-Extracted MD5 hash for further analysis.
-🎯 Action on Objectives
-Web server defaced with file: poisonivy-is-coming-for-you-batman.jpeg.
-Splunk search revealed suspicious download from attacker-controlled domain:
-index=botsv1 url="/poisonivy-is-coming-for-you-batman.jpeg" dest_ip="192.168.250.70" | table _time src dest_ip http.hostname url
-Domain: prankglassinebracket.jumpingcrab.com.
-🌐 Command & Control Phase
-Observed attacker using Dynamic DNS for malicious infra.
-DNS queries captured in stream:dns logs confirmed C2 traffic.
-⚔️ Weaponization & Delivery Phases
-Used OSINT (Robtex, VirusTotal, ThreatMiner, Hybrid-Analysis).
-Findings:
-Associated malware: MirandaTateScreensaver.scr.exe (MD5: c99131e0169171935c5ac32615ed6261).
-Attacker email: Lillian.rose@po1s0n1vy.com.
-Multiple masquerading domains tied to attacker IPs.
+### 🎯 Action on Objectives
+- Web server defaced with file: <b>poisonivy-is-coming-for-you-batman.jpeg</b>.
+- Splunk search revealed suspicious download from attacker-controlled domain:
+- ```spl
+  index=botsv1 url="/poisonivy-is-coming-for-you-batman.jpeg" dest_ip="192.168.250.70" | table _time src dest_ip http.hostname url
+- Domain: `prankglassinebracket.jumpingcrab.com`.
+--
+### 🌐 Command & Control Phase
+- Observed attacker using <b>Dynamic DNS</b> for malicious infra.
+- DNS queries captured in `stream:dns` logs confirmed C2 traffic.
+
+### ⚔️ Weaponization & Delivery Phases
+- Used OSINT (Robtex, VirusTotal, ThreatMiner, Hybrid-Analysis).
+#### Findings:
+- Associated malware: `MirandaTateScreensaver.scr.exe` (MD5: `c99131e0169171935c5ac32615ed6261`).
+- Attacker email: `Lillian.rose@po1s0n1vy.com`.
+- Multiple masquerading domains tied to attacker IPs.
 
 ---
 
