@@ -81,7 +81,7 @@ Validated findings with OSINT platforms to enrich context.
 
 ## 🧩 Skills Demonstrated
 Splunk search queries for log analysis
-Regex extraction within Splunk queries (rex)
+Regex extraction within Splunk queries (`rex`)
 Cyber Kill Chain methodology for incident mapping
 Correlation of host-centric and network-centric logs
 Enrichment with OSINT tools (VirusTotal, Robtex, ThreatMiner, Hybrid Analysis)
