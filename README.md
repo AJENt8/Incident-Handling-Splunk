@@ -40,14 +40,15 @@
   index=botsv1 sourcetype=stream:http dest_ip="192.168.250.70" http_method=POST uri="/joomla/administrator/index.php" | table _time uri src_ip dest_ip form_data
   index=botsv1 sourcetype=stream:http dest_ip="192.168.250.70" http_method=POST form_data=*username*passwd* | rex field=form_data "passwd=(?<creds>\w+)" | table src_ip creds http_user_agent uri
 #### Findings:
-- -Attacker brute-forced user admin.
-Password spraying attempts from IP 23.22.63.114.
-~142 unique brute-force attempts → successful login.
+- Attacker brute-forced user `admin`.
+- Password spraying attempts from IP `23.22.63.114`.
+- ~142 unique brute-force attempts → successful login.
 
 ### 🖥️ Installation Phase
-Detected uploaded malicious executable 3791.exe.
-Log sources: Sysmon, WinEventLog, fortigate_utm.
-Verified execution with Sysmon EventCode=1:
+- Detected uploaded malicious executable 3791.exe.
+- Log sources: Sysmon, WinEventLog, fortigate_utm.
+- Verified execution with Sysmon EventCode=1:
+
 index=botsv1 "3791.exe" sourcetype="XmlWinEventLog" EventCode=1
 Extracted MD5 hash for further analysis.
 🎯 Action on Objectives
