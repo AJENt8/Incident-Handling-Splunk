@@ -43,7 +43,7 @@
 - Attacker brute-forced user `admin`.
 - Password spraying attempts from IP `23.22.63.114`.
 - ~142 unique brute-force attempts → successful login.
-
+---
 ### 🖥️ Installation Phase
 - Detected uploaded malicious executable 3791.exe.
 - Log sources: Sysmon, WinEventLog, fortigate_utm.
@@ -51,18 +51,18 @@
 - ```spl
   index=botsv1 "3791.exe" sourcetype="XmlWinEventLog" EventCode=1
 - Extracted MD5 hash for further analysis.
-
+---
 ### 🎯 Action on Objectives
 - Web server defaced with file: <b>poisonivy-is-coming-for-you-batman.jpeg</b>.
 - Splunk search revealed suspicious download from attacker-controlled domain:
 - ```spl
   index=botsv1 url="/poisonivy-is-coming-for-you-batman.jpeg" dest_ip="192.168.250.70" | table _time src dest_ip http.hostname url
 - Domain: `prankglassinebracket.jumpingcrab.com`.
---
+---
 ### 🌐 Command & Control Phase
 - Observed attacker using <b>Dynamic DNS</b> for malicious infra.
 - DNS queries captured in `stream:dns` logs confirmed C2 traffic.
-
+---
 ### ⚔️ Weaponization & Delivery Phases
 - Used OSINT (Robtex, VirusTotal, ThreatMiner, Hybrid-Analysis).
 #### Findings:
